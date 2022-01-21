@@ -5,7 +5,6 @@ var cont = 0;//contador para el while de tarifas
 var Icont = 0;//contador para el while de millas
 var n = 0;//variable que almacena el ingreso antes de validar
 
-
 document.write("Por ser un nuevo usuario de Uber, tienes 20 dólares de descuento en tu primer viaje." + "<br>")
 
 while (Icont < 1) {
@@ -72,7 +71,6 @@ while (cont < 5) {
                     cont = 0;
                 }
             }
-
         }
     } else {
         document.write('----------------------------------------------' + "<br>")
@@ -83,19 +81,20 @@ while (cont < 5) {
 
 document.write('Calculando el mejor Carro en el que puede viajar....' + "<br>")
 
-
-
-
 fancyRide(I, tarifa);
-
 
 function fancyRide(l, tarifas) {
     let Viaje = [];
     for (let ii = 0; ii < tarifas.length; ii++) {
-        let num = l * tarifas[ii];
-        if (num < 20) {
-            Viaje[ii] = num;
+        let num = l * tarifas[ii].precio;
+        if (num <= 20) {
+            Viaje[ii] = tarifas[ii];
         }
-
+        document.write('---------------------------------------------------------------' + "<br>")
     }
+    let ultimo = Viaje.length - 1;//al estar ordenados de menor a mayor desde antes solo es necesario seleccionar el ultimo elemento de la lista 
+    let total = l * Viaje[ultimo].precio;
+    document.write('--------------------------------------------------------------------------------------------' + "<br>")
+    document.write('Tu Mejor Opcion es '+Viaje[ultimo].coche +" con un precio por milla de $"+Viaje[ultimo].precio+" con un total de $"+ total+"<br>")
+    document.write('--------------------------------------------------------------------------------------------' + "<br>")
 }
